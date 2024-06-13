@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background-color: #16171f;
+}
+
+
+/* MOBILE VIEW iFRAME */
+#mobileViewer {
+    background-color: white;
+    width: 430px;
+    height: 932px;
+    margin-right: 60px;
+    border: 0;
+    outline: 0;
+}
+#phone {
+    width: 430px;
+    height: 932px;
+    background: white;
+    overflow-y: scroll;
+    position: relative;
+    font-family: sans-serif;
+}
+
+
+/* EDITOR */
+#codeEditor {
+    background-color: #2b2b2c;
+    height: 932px;
+    width: 700px;
+    margin-left: 100px;
+    resize: none;
+    color: white;
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+</head>
+<body>
+
+<div id="htmlCode" style="display: none;">
+    <div id="phone">
+
+        <div id="date-time" style="height: 40px; background: var(--bg); position: sticky; top: 0; width: 100%; z-index: 1; display: flex;
+        justify-content: space-between; align-items: center; box-sizing: border-box; padding: 8px 16px 0 28px; font-weight: bold;">
+            <div>2:16PM</div>
+            <div>📶🌐🔋</div>
+        </div>
+    
+        <div id="content">
+            <div id="page-top-bar" style="height: 40px;">
+                <div id="page-top-back">〈</div>
+                <div id="page-top-username">ssambender</div>
+                <div id="page-top-more">•••</div>
+            </div>
+            <div id="account-info-sec" style="height: 130px;">
+                <div id="account-pfp-container" style="overflow: hidden;">
+                    <div id="account-pfp" style="background-color: pink; width: 100px; height: 100px; border-radius: 100px; display: flex; justify-content: center; align-items: center;">PFP</div>
+                </div>
+                <div id="account-name-sec" style="">
+                    <div id="account-name" style="font-weight: bold;">FIRST LAST</div>
+                    <div id="statsSec" style="display: flex;">
+                        <div class="account-stat">48 POSTS</div>
+                        <div class="account-stat">140 FOLLOWERS</div>
+                        <div class="account-stat">59 FOLLOWING</div>
+                    </div>
+                </div>
+            </div>
+            <div id="account-bio" style="max-height: 70px; overflow: hidden;">
+                This is a bio, text can be written here and what not.
+                This is a bio, text can be written here and what not.
+                This is a bio, text can be written here and what not.
+                This is a bio, text can be written here and what not.
+            </div>
+            <div id="accounts-similar" style="height: 30px;">
+                ACCOUNTS IN COMMON: NAME
+            </div>
+            <div id="followBtnsBar">
+                <button class="following">Follow</button>
+                <button style="margin-left: 20px;">Message</button>
+            </div>
+            <div id="feedBtnsBar" style="height: 45px;">
+                <button class="feedBtnsBar-active">[#]</button>
+                <button>///</button>
+                <button>\T/</button>
+                <button>@</button>
+            </div>
+            <div id="feedContainer">
+                <div class="feedSquare">A</div>
+                <div class="feedSquare">B</div>
+                <div class="feedSquare">C</div>
+                <div class="feedSquare">D</div>
+                <div class="feedSquare">E</div>
+                <div class="feedSquare">F</div>
+                <div class="feedSquare">G</div>
+                <div class="feedSquare">H</div>
+                <div class="feedSquare">I</div>
+                <div class="feedSquare">J</div>
+                <div class="feedSquare">K</div>
+                <div class="feedSquare">L</div>
+                <div class="feedSquare">M</div>
+                <div class="feedSquare">N</div>
+                <div class="feedSquare">O</div>
+                <div class="feedSquare">P</div>
+                <div class="feedSquare">Q</div>
+                <div class="feedSquare">R</div>
+                <div class="feedSquare">S</div>
+                <div class="feedSquare">T</div>
+                <div class="feedSquare">U</div>
+            </div>
+        </div>
+    
+        <!-- Sticks to bottom of screen on scroll -->
+        <div style="position: sticky; bottom: 0; width: 100%; z-index: 1;">
+            <!-- APP BOTTOM NAVBAR -->
+            <div id="bottom-navbar" style="height: 55px;">
+                <div class="navbar-icon navbar-active">1</div>
+                <div class="navbar-icon">2</div>
+                <div class="navbar-icon">3</div>
+                <div class="navbar-icon">4</div>
+                <div class="navbar-icon">5</div>
+            </div>
+            <!-- iOS home bar -->
+            <div style="height: 22px; background-color: var(--bg); display: flex; justify-content: center; align-items: center;">
+                <div style="background-color: black; width: 36%; height: 23%; border-radius: 10vw;"></div>
+            </div>
+        </div>
+    
+    </div>
+
+</div>
+
+<iframe id="mobileViewer"></iframe>
+
+<textarea id="codeEditor">/* ROOT */
+:root {
+    --bg: #ffffff;
+    --font: #000000;
+    --following: #65ce4e;
+    --following-hov: #25b425;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* PHONE VIEW FRAME */
+#phone {
+    width: 430px;
+    height: 932px;
+    background: white;
+    overflow-y: scroll;
+    position: relative;
+    font-family: sans-serif;
+}
+
+
+
+/* PAGE TOP BAR */
+#page-top-bar {
+    background: var(--bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: var(--font);
+}
+/* BACK PAGE*/
+#page-top-back {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 9px;
+    cursor: pointer;
+}
+/* PAGE TOP USERNAME */
+#page-top-username {
+    text-transform: none;
+}
+/* PAGE TOP MORE */
+#page-top-more {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 9px;
+    cursor: pointer;
+}
+
+
+
+/* ACCOUNT INFO SEC */
+#account-info-sec {
+    background: var(--bg);
+    display: flex;
+    color: var(--font);
+}
+/* PFP container */
+#account-pfp-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* PFP */
+#account-pfp {
+}
+/* ACCOUNT NAME & STATS */
+#account-name-sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--font);
+}
+/* ACCOUNT NAME (FIRST/LAST) */
+#account-name {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    color: var(--font);
+}
+/* ACCOUNT STATS */
+#statsSec {
+    color: var(--font);
+}
+/* STAT (Followers, posts, etc...) */
+.account-stat {
+    text-align: center;
+}
+
+
+
+/* ACCOUNT BIO */
+#account-bio {
+    box-sizing: border-box;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg);
+    color: var(--font);
+}
+
+
+
+/* ACCOUNTS SIMILAR */
+#accounts-similar {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 0.80rem;
+    padding-left: 8px;
+    color: var(--font);
+}
+
+
+
+/* FOLLOW/MESSAGE BAR */
+#followBtnsBar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    padding: 0 30px;
+    background-color: var(--bg);
+}
+/* FOLLOW/MESSAGE BAR BUTTONS */
+#followBtnsBar button {
+    width: 48%;
+    height: 60%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--font);
+    box-sizing: border-box;
+}
+#followBtnsBar button:hover {
+    background-color: #e2e2e2;
+    cursor: pointer;
+}
+/* FOLLOWING=TRUE STATUS */
+#followBtnsBar button.following {
+    color: var(--following);
+    border: solid 2px var(--following);
+    background: none;
+}
+#followBtnsBar button.following:hover {
+    color: var(--following-hov);
+    border: solid 2px var(--following-hov);
+}
+.following:after {
+    content: 'ing';
+  }
+
+
+
+/* SORT FEED BAR */
+#feedBtnsBar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2px;
+}
+/* SORT FEED BAR BUTTONS */
+#feedBtnsBar button {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--font);
+}
+#feedBtnsBar button:hover {
+    cursor: pointer;
+    border-top: solid 2px var(--bg);
+    border-bottom: solid 2px var(--font);
+}
+#feedBtnsBar button.feedBtnsBar-active {
+    border-top: solid 2px white;
+    border-bottom: solid 2px black;
+    font-weight: bold;
+}
+
+
+
+/* FEED CONTAINER */
+#feedContainer {
+    min-height: 450px;
+    background: var(--bg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* FEED POST SQUARE */
+.feedSquare {
+    width: 33%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.R-2OxDXmafvmLXU57LFELQHaHa%26pid%3DApi&f=1&ipt=9ecb741e21e2045dd8012ff7c5566cef4384c859c6ddace5c8bbb47f131c1136&ipo=images');
+    background-size: cover;
+    margin-bottom: 2px;
+    filter: contrast(0.5) brightness(1.2);
+    transition: filter .1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feedSquare:hover {
+	cursor: pointer;
+    filter: contrast(0.5) brightness(1.1);
+    transition: filter 0s;
+}
+
+
+
+/* BOTTOM BAR */
+#bottom-navbar {
+    background-color: var(--bg);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/* NAVBAR ICON */
+.navbar-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    outline: solid 2px #000;
+    box-sizing: border-box;
+    border-radius: 50px;
+}
+.navbar-icon:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #000;
+}
+/* NAVBAR ICON ACTIVE */
+.navbar-active {
+    color: white;
+    background-color: #000;
+    outline: solid 2px #000;
+}
+.navbar-active:hover {
+    color: #000;
+    background-color: #bbb;
+}</textarea>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+
+<script>
+function run() {
+    let htmlCode = document.getElementById('htmlCode');
+    let cssCode = editor.getValue();
+    let mobileView = document.getElementById('mobileViewer');
+    let iframeDoc = mobileView.contentDocument;
+    iframeDoc.body.innerHTML = htmlCode.innerHTML + "<style> body {margin: 0; background: #3c3f41; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;} " + cssCode + "</style>";
+
+    // Execute the script within the HTML content
+    let scriptTags = htmlCode.getElementsByTagName('script');
+    for (let i = 0; i < scriptTags.length; i++) {
+        let script = document.createElement('script');
+        script.text = scriptTags[i].innerHTML;
+        iframeDoc.body.appendChild(script);
+    }
+}
+
+let editor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    lineNumbers: true,
+    mode: 'css',
+    theme: 'dracula',
+    indentUnit: 4,
+    tabSize: 4,
+    indentWithTabs: false,
+});
+editor.setSize(700, 932);
+
+editor.on('change', run);
+
+// Initial run to apply initial styles
+run();
+</script>
+</body>
+</html>
